@@ -1,6 +1,197 @@
 \section{Data Types}
 
-TODO: Complete this section as time permits.
+\paragraph{}
+   In this section, we are going to talk about data types.
+
+\paragraph{}
+   \begin{displayquote}
+      Data types in C refer to an extensive system used for declaring variables and functions of different ``types''. The type of a variable or
+      function determines how much space it occupies in storage and how the bit pattern stored is interpreted.
+   \end{displayquote}
+
+\paragraph{}
+   The types in C can be classified as follows:
+   \begin{center}
+      \begin{tabular}{ ||p{2in}| p{4in}|| }
+         \hline
+         No.Types & description\\ [1.5ex]
+         \hline\hline
+         1.) Basic types & They are basic arithmetic types and can be further classified into (a) integer types and (b) floating-point types;\\
+         \hline
+         2.) Enumerated types & They are, again, arithmetic types and they are used to define variables that can only assign certain discrete integer
+         values throughout the program;\\
+         \hline
+         3.) Void Type & This type indicates the lack of a specified value;\\
+         \hline
+         4.) Derived Types & These include (a) Pointer types, (b) Array types, (c) Structure types, (d) Union types, and (e) Function types.\\
+         \hline
+      \end{tabular}
+   \end{center}
+
+% There is a \newpage here to keep Subsection 2.2.1 from being cut in half.
+\newpage
+
+\rule{\textwidth}{0.3ex}\par
+
+\subsection{Integer Types}
+   \paragraph{}
+      The following table provides the details of standard integer types with their storage sizes and value ranges −
+      \begin{center}
+         \begin{tabular}{ ||p{1in}| p{1in} | p{4in}|| }
+            \hline
+            \textbf{Type} & \textbf{Storage Size} & \textbf{Value range} \\ [1.75ex]
+            \hline\hline
+            char & 1 byte & -128 to 127 or 0 to 255 \\
+            \hline
+            unsigned char & 1 byte & 0 to 255 \\
+            \hline
+            signed char & 1 byte & -128 to 127 \\
+            \hline
+            int & 2 or 4 bytes & -32,768 to 32,767 or -2,147,483,648 to 2,147,483,647 \\
+            \hline
+            unsigned int & 2 or 4 bytes & 0 to 65,535 or 0 to 4,294,967,295 \\
+            \hline
+            short & 2 bytes & -32,768 to 32,767 \\
+            \hline
+            unsigned short & 2 bytes & 0 to 65,535 \\
+            \hline
+            long & 4 or 8 bytes & -9223372036854775808 to 9223372036854775807 \\ [0.8ex]
+            \hline
+            unsigned long & 8 bytes & 0 to 18446744073709551615 \\
+            \hline
+         \end{tabular}
+      \end{center}
+
+\paragraph{}
+   To get the precise size of a type or variable on a particular platform, you can use the \textbf{sizeof} operator.
+   The expressions \textit{sizeof(<type>)} yields the storage size of the object or type in bytes. On the next page, I will provide an example of 
+   this operator in action.
+
+% There is a \newpage here to prevent the figure from being cut in half.
+\newpage
+
+\begin{lstlisting}
+// This is an include directive.
+// It tells the compiler to 'include' the contents of a file in 
+// the standard library called "stdio.h" into our program.
+#include <stdio.h>
+
+// Hope you recognize this.
+// I spoke in Section 2.1 "Hello World" about the 'main' 
+// function and its purpose. Feel free to revisit the 
+// section if you need a refresher on the purpose
+// of this specially named function.
+int main(int argc, char** argv)
+{
+   // INT data type.
+   int a = 1;
+   printf("Size of variable a : %d\n", sizeof(a));
+   printf("Size of data type INT : %d\n", sizeof(int));
+   // CHAR data type.
+   char b = 'b';
+   printf("Size of variable b : %d\n", sizeof(b));
+   printf("Size of data type CHAR : %d\n", sizeof(char));
+   // FLOAT data type.
+   float c = 1.0;
+   printf("Size of variable c : %d\n", sizeof(c));
+   printf("Size of data type FLOAT : %d\n", sizeof(float));
+   // DOUBLE data type.
+   double d = 1.0;
+   printf("Size of variable d : %d\n", sizeof(d));
+   printf("Size of data type DOUBLE : %d\n", sizeof(double));
+   // SHORT data type.
+   short e = 1;
+   printf("Size of variable e : %d\n", sizeof(e));
+   printf("Size of data type SHORT : %d\n", sizeof(short));
+
+   return 0;
+}
+\end{lstlisting}
+
+\paragraph{}
+   In these examples, I will assume that you are compiling the code as I have and are running the examples alongside of me.
+
+\paragraph{}
+   When we execute this program, we should see the following output:
+
+\begin{lstlisting}
+Size of variable a : 4
+Size of data type INT : 4
+Size of variable b : 1
+Size of data type CHAR : 1
+Size of variable c : 4
+Size of data type FLOAT : 4
+Size of variable d : 8
+Size of data type DOUBLE : 8
+Size of variable e : 2
+Size of data type SHORT : 2
+\end{lstlisting}
+
+\paragraph{}
+   It is important to note that the storage sizes that we get from \textbf{sizeof} are represented in \textit{bytes} and not \textit{bits}.
+   This means that instead of 32 being the size we see for \textit{INT}, we get \textit{4}. If you would like to make sure for yourself that we are
+   seeing the sizes I mentioned earlier, feel free to multiply all of the numbers in the program's output by 8.
+
+\begin{center}
+   \begin{tabular}{ || p{1in} | p{2in} | p{2in} || }
+   \hline
+   \textbf{Type} & \textbf{Out x Bytes} & \textbf{Bits} \\ [0.75ex]
+   \hline\hline
+   INT & \(4 * 8\) & 32 \\
+   \hline
+   CHAR & \(1 * 8\) & 8 \\
+   \hline
+   FLOAT & \(4 * 8\) & 32 \\
+   \hline
+   DOUBLE & \(8 * 8\) & 64 \\
+   \hline
+   SHORT & \(2 * 8\) & 16 \\
+   \hline
+   \end{tabular}
+\end{center}
+
+% A \newpage is placed here to avoid cutting the following subsection in half.
+\newpage
+
+\subsection{Void Types}
+   \paragraph{}
+      The \textit{void} type indicates the lack of a specified value. The following table describes where \textit{void} may be used:
+      \begin{center}
+         \begin{tabular}{ || p{2in} | p{4in} || }
+         \hline
+         \textbf{Type} & \textbf{Description} \\ [1ex]
+         \hline\hline
+         Function: Return Argument & There are various functions in C which do not return any value or you can say they return void. A function with
+         no return value has the return type as void. For example, \textit{void exit(int status);} \\ [0.4ex]
+         \hline
+         Function: Argument as Void & There are various functions in C which do not accept any parameter. A function with no parameter can accept a
+         void. For example, \textit{int rand(void);} \\ [0.6ex]
+         \hline
+         Pointers to Void & A pointer of type void * represents the address of an object, but not its type. For example, a memory allocation function 
+         called \textit{malloc}, which returns a pointer to void which can be casted to any data type. \\ [0.4ex]
+         \hline
+         \end{tabular}
+      \end{center}
+
+   \paragraph{}
+      The \textit{void} type is often used in conjunction with a pointer, as noted above, to allow the programmer to cast into any type.
+      In this next part, we are going to be discussing structure types and how they are used to organize data within a program.
+
+% A \newpage is placed here to separate subsections.
+\newpage
+
+\subsection{Structure Types}
+   \paragraph{}
+      TODO: Complete this segment as time permits.
+
+% A \newpage is placed here to separate subsections.
+\newpage
+
+\subsection{Final Thoughts}
+   \paragraph{}
+      Data types are a relatively simple concept to grasp if you take the time to understand why they are useful.
+      It takes time and often requires more patience than you are willing to offer, but data types make programming so much more simple
+      and provide a window into understanding what the computer is doing with your program.
 
 % A \newpage should be placed at the end of every section.
 \newpage

@@ -1,10 +1,23 @@
+% Remove page numbering and reset it to 1.
+\pagenumbering{gobble}
+\clearpage
+\thispagestyle{empty}
+
 \maketitle
 
+% Separate title page from the rest of the document.
 \newpage
+\clearpage
+% Set page numbering to Roman numerals and reset to 1.
+\pagenumbering{roman}
 
 \tableofcontents
 
+% Separate TOC from the rest of the document.
 \newpage
+\clearpage
+% Set page numbering to Arabic and reset to 1.
+\pagenumbering{arabic}
 
 \include{01_GettingStarted/prologue}
 \include{01_GettingStarted/languages}
